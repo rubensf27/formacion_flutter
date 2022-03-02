@@ -1,5 +1,15 @@
 import 'package:flutter/material.dart'
-    show Color, Colors, ThemeData, AppBarTheme, TextButtonThemeData, TextButton;
+    show
+        Color,
+        Colors,
+        ThemeData,
+        AppBarTheme,
+        TextButtonThemeData,
+        TextButton,
+        FloatingActionButtonThemeData,
+        ElevatedButtonThemeData,
+        ElevatedButton,
+        StadiumBorder;
 
 class AppTheme {
   static final Color colorPrimary = Colors.teal.shade300;
@@ -17,6 +27,18 @@ class AppTheme {
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
         primary: colorButton,
+      ),
+    ),
+    //FloatingActionButtons
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      backgroundColor: colorPrimary,
+      elevation: 3,
+    ),
+    // ElevatedButton
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        primary: colorPrimary,
+        shape: const StadiumBorder(),
       ),
     ),
   );
