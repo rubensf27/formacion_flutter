@@ -8,6 +8,9 @@ class AlertScreen extends StatelessWidget {
       barrierDismissible: false,
       context: context,
       builder: (context) => AlertDialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadiusDirectional.circular(15),
+        ),
         elevation: 5,
         title: const Text('Título'),
         content: Column(
