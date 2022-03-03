@@ -1,9 +1,12 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AlertScreen extends StatelessWidget {
   const AlertScreen({Key? key}) : super(key: key);
 
-  void displayDialog(BuildContext context) {
+  void displayDialogAndroid(BuildContext context) {
     showDialog(
       barrierDismissible: false,
       context: context,
@@ -35,6 +38,43 @@ class AlertScreen extends StatelessWidget {
     );
   }
 
+  void displayDialogIos(BuildContext context) {
+    showCupertinoDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (context) => CupertinoAlertDialog(
+        title: const Text('Título'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: const [
+            Text('Este es el contenido de la alerta'),
+            SizedBox(
+              height: 10,
+            ),
+            FlutterLogo(
+              size: 100,
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Cancelar'),
+          ),
+          TextButton(
+            onPressed: () {},
+            child: const Text(
+              'Ok',
+              style: TextStyle(
+                color: Colors.indigo,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +83,9 @@ class AlertScreen extends StatelessWidget {
       ),
       body: Center(
         child: ElevatedButton(
-          onPressed: () => displayDialog(context),
+          onPressed: () => Platform.isAndroid
+              ? displayDialogAndroid(context)
+              : displayDialogIos(context),
           child: const Padding(
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
             child: Text(
