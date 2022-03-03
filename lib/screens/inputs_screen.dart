@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fl_components/widgets/widgets.dart';
 
 class InputsScreen extends StatelessWidget {
   const InputsScreen({Key? key}) : super(key: key);
@@ -16,37 +17,16 @@ class InputsScreen extends StatelessWidget {
             vertical: 10,
           ),
           child: Column(
-            children: <Widget>[
-              TextFormField(
-                autofocus: true,
-                textCapitalization: TextCapitalization.words,
-                onChanged: (str) {
-                  print(str);
-                },
-                validator: (str) {
-                  if (str == null || str.isEmpty) {
-                    return 'Este campo es requerido.';
-                  }
-                  return str.length < 3 ? 'Mínimo de 3 letras' : null;
-                },
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                decoration: InputDecoration(
-                  hintText: 'Nombre de usuario',
+            children: const <Widget>[
+              SizedBox(
+                width: 250,
+                height: 70,
+                child: CustomInputField(
                   labelText: 'Nombre',
-                  helperText: 'Solo letras',
-                  counterText: '3 caracteres',
-                  suffixIcon: const Icon(Icons.group_outlined),
-                  //prefixIcon: Icon(Icons.verified_user_outlined),
-                  icon: const Icon(Icons.assignment_ind_outlined),
-                  errorStyle: TextStyle(color: Colors.deepOrange[200]),
-                  focusedBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.green)),
-                  border: const OutlineInputBorder(
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(10),
-                      topRight: Radius.circular(10),
-                    ),
-                  ),
+                  hintText: 'Nombre de usuario',
+                  helperText: 'Solo se permiten letras',
+                  icon: Icons.supervised_user_circle_sharp,
+                  suffixIcon: Icons.admin_panel_settings_outlined,
                 ),
               ),
             ],

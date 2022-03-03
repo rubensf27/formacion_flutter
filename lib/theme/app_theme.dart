@@ -9,7 +9,13 @@ import 'package:flutter/material.dart'
         FloatingActionButtonThemeData,
         ElevatedButtonThemeData,
         ElevatedButton,
-        StadiumBorder;
+        StadiumBorder,
+        InputDecorationTheme,
+        TextStyle,
+        OutlineInputBorder,
+        BorderSide,
+        BorderRadius,
+        Radius;
 
 class AppTheme {
   static final Color colorPrimary = Colors.teal.shade300;
@@ -39,6 +45,34 @@ class AppTheme {
       style: ElevatedButton.styleFrom(
         primary: colorPrimary,
         shape: const StadiumBorder(),
+      ),
+    ),
+    // InputDecorationTheme
+    inputDecorationTheme: InputDecorationTheme(
+      focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: colorPrimary),
+        borderRadius: const BorderRadius.only(
+          bottomLeft: Radius.circular(10),
+          topRight: Radius.circular(10),
+        ),
+      ),
+      floatingLabelStyle: TextStyle(
+        color: colorPrimary,
+      ),
+      suffixIconColor: Colors.teal[900],
+      iconColor: Colors.teal[900],
+      enabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: colorPrimary),
+        borderRadius: const BorderRadius.only(
+          bottomLeft: Radius.circular(10),
+          topRight: Radius.circular(10),
+        ),
+      ),
+      border: const OutlineInputBorder(
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(10),
+          topRight: Radius.circular(10),
+        ),
       ),
     ),
   );
