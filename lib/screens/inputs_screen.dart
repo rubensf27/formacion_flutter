@@ -18,16 +18,45 @@ class InputsScreen extends StatelessWidget {
           ),
           child: Column(
             children: const <Widget>[
+              CustomInputField(
+                labelText: 'Nombre',
+                hintText: 'Nombre de usuario',
+                helperText: 'Solo se permiten letras',
+                icon: Icons.supervised_user_circle_sharp,
+                suffixIcon: Icons.admin_panel_settings_outlined,
+              ),
               SizedBox(
-                width: 250,
-                height: 70,
-                child: CustomInputField(
-                  labelText: 'Nombre',
-                  hintText: 'Nombre de usuario',
-                  helperText: 'Solo se permiten letras',
-                  icon: Icons.supervised_user_circle_sharp,
-                  suffixIcon: Icons.admin_panel_settings_outlined,
-                ),
+                height: 30,
+              ),
+              CustomInputField(
+                labelText: 'Apellido',
+                hintText: 'Apellido de usuario',
+                helperText: 'Solo se permiten letras',
+                icon: Icons.supervised_user_circle_sharp,
+                suffixIcon: Icons.admin_panel_settings_outlined,
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              CustomInputField(
+                labelText: 'Correo',
+                hintText: 'Mail de usuario',
+                helperText: 'Solo se permiten letras',
+                icon: Icons.contact_mail_outlined,
+                //suffixIcon: Icons.admin_panel_settings_outlined,
+                textInputType: TextInputType.emailAddress,
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              CustomInputField(
+                labelText: 'Contraseña',
+                hintText: 'Password',
+                helperText: 'Solo se permiten letras',
+                icon: Icons.contact_mail_outlined,
+                suffixIcon: Icons.password_outlined,
+                textInputType: TextInputType.emailAddress,
+                hideField: true,
               ),
             ],
           ),

@@ -8,6 +8,8 @@ class CustomInputField extends StatelessWidget {
     this.helperText,
     this.icon,
     this.suffixIcon,
+    this.textInputType,
+    this.hideField = false,
   }) : super(key: key);
 
   final String? hintText;
@@ -15,14 +17,30 @@ class CustomInputField extends StatelessWidget {
   final String? helperText;
   final IconData? icon;
   final IconData? suffixIcon;
+  final TextInputType? textInputType;
+  final bool hideField;
 
   @override
   Widget build(BuildContext context) {
+    bool isHideField = hideField;
+
+    bool showPassword() {
+      if (hideField && !isHideField) {
+        isHideField = true;
+      } else {
+        isHideField = false;
+      }
+      print('$isHideField - $hideField');
+      return isHideField && hideField;
+    }
+
     return TextFormField(
+      keyboardType: textInputType ?? TextInputType.text,
       autofocus: true,
+      obscureText: isHideField && hideField,
       textCapitalization: TextCapitalization.words,
       onChanged: (str) {
-        print(str);
+        print('Campo $labelText: $str');
       },
       validator: (str) {
         if (str == null || str.isEmpty) {
@@ -38,7 +56,12 @@ class CustomInputField extends StatelessWidget {
         contentPadding: const EdgeInsets.all(10),
         isDense: true,
         counterText: '3 caracteres',
-        suffixIcon: suffixIcon == null ? null : Icon(suffixIcon),
+        suffixIcon: (hideField)
+            ? IconButton(
+                onPressed: () => showPassword(), icon: Icon(suffixIcon))
+            : suffixIcon == null
+                ? null
+                : Icon(suffixIcon),
         //prefixIcon: Icon(Icons.verified_user_outlined),
         icon: icon == null ? null : Icon(icon),
       ),
