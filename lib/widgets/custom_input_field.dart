@@ -19,7 +19,7 @@ class CustomInputField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      autofocus: false,
+      autofocus: true,
       textCapitalization: TextCapitalization.words,
       onChanged: (str) {
         print(str);
