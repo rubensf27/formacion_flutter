@@ -14,6 +14,7 @@ class InputsScreen extends StatelessWidget {
       'password': '123456',
       'role': 'Admin',
     };
+    String _nombre = 'Nombre';
     return Scaffold(
       appBar: AppBar(
         title: const Text('Inputs y Forms'),
@@ -28,38 +29,43 @@ class InputsScreen extends StatelessWidget {
             key: myFormKey,
             child: Column(
               children: <Widget>[
-                const CustomInputField(
-                  labelText: 'Nombre',
+                CustomInputField(
+                  labelText: _nombre,
                   hintText: 'Nombre de usuario',
                   helperText: 'Solo se permiten letras',
                   icon: Icons.supervised_user_circle_sharp,
                   suffixIcon: Icons.admin_panel_settings_outlined,
+                  formValues: formValues,
+                  formProperty: 'firstName',
                 ),
                 const SizedBox(
                   height: 30,
                 ),
-                const CustomInputField(
+                CustomInputField(
                   labelText: 'Apellido',
                   hintText: 'Apellido de usuario',
                   helperText: 'Solo se permiten letras',
                   icon: Icons.supervised_user_circle_sharp,
                   suffixIcon: Icons.admin_panel_settings_outlined,
+                  formValues: formValues,
+                  formProperty: 'lastName',
                 ),
                 const SizedBox(
                   height: 30,
                 ),
-                const CustomInputField(
+                CustomInputField(
                   labelText: 'Correo',
                   hintText: 'Mail de usuario',
                   helperText: 'Solo se permiten letras',
                   icon: Icons.contact_mail_outlined,
                   //suffixIcon: Icons.admin_panel_settings_outlined,
                   textInputType: TextInputType.emailAddress,
+                  formValues: formValues, formProperty: 'email',
                 ),
                 const SizedBox(
                   height: 30,
                 ),
-                const CustomInputField(
+                CustomInputField(
                   labelText: 'Contraseña',
                   hintText: 'Password',
                   helperText: 'Solo se permiten letras',
@@ -67,6 +73,8 @@ class InputsScreen extends StatelessWidget {
                   suffixIcon: Icons.password_outlined,
                   textInputType: TextInputType.emailAddress,
                   hideField: true,
+                  formValues: formValues,
+                  formProperty: 'password',
                 ),
                 const SizedBox(
                   height: 30,
@@ -78,6 +86,9 @@ class InputsScreen extends StatelessWidget {
                       print('Formulario no válido.');
                       return;
                     }
+                    _nombre = 'Hola';
+                    myFormKey.currentState!.build(context);
+                    print('Nombre: $_nombre');
                     print(formValues);
                   },
                   child: const SizedBox(

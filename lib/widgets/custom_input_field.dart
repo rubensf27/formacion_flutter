@@ -10,6 +10,8 @@ class CustomInputField extends StatelessWidget {
     this.suffixIcon,
     this.textInputType,
     this.hideField = false,
+    required this.formProperty,
+    required this.formValues,
   }) : super(key: key);
 
   final String? hintText;
@@ -19,6 +21,8 @@ class CustomInputField extends StatelessWidget {
   final IconData? suffixIcon;
   final TextInputType? textInputType;
   final bool hideField;
+  final String formProperty;
+  final Map<String, String> formValues;
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +44,7 @@ class CustomInputField extends StatelessWidget {
       obscureText: isHideField && hideField,
       textCapitalization: TextCapitalization.words,
       onChanged: (str) {
+        formValues[formProperty] = str;
         print('Campo $labelText: $str');
       },
       validator: (str) {
