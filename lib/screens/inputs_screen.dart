@@ -14,6 +14,7 @@ class InputsScreen extends StatelessWidget {
       'password': '123456',
       'role': 'Admin',
     };
+
     String _nombre = 'Nombre';
     return Scaffold(
       appBar: AppBar(
