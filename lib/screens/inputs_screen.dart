@@ -79,9 +79,34 @@ class InputsScreen extends StatelessWidget {
                 const SizedBox(
                   height: 30,
                 ),
+                DropdownButtonFormField<String>(
+                  value: 'admin',
+                  items: const [
+                    DropdownMenuItem(
+                      value: 'admin',
+                      child: Text('Admin'),
+                    ),
+                    DropdownMenuItem(
+                      value: 'user',
+                      child: Text('User'),
+                    ),
+                    DropdownMenuItem(
+                      value: 'superuser',
+                      child: Text('Superuser'),
+                    ),
+                    DropdownMenuItem(
+                      value: 'jrdeveloper',
+                      child: Text('Jr. Developer'),
+                    ),
+                  ],
+                  onChanged: (value) {
+                    print('value: $value');
+                    formValues['role'] = value.toString();
+                  },
+                ),
                 ElevatedButton(
                   onPressed: () {
-                    FocusScope.of(context).requestFocus(FocusNode());
+                    //FocusScope.of(context).requestFocus(FocusNode());
                     if (!myFormKey.currentState!.validate()) {
                       print('Formulario no válido.');
                       return;
