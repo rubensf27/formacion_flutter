@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+# formacion_flutter
+Conjunto de varias aplicaciones para formación sobre el lenguaje de Flutter de Google.
+=======
 # fl_components
 
 A new Flutter project.
@@ -14,3 +18,4 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+>>>>>>> 25436efd83139f6a615a681ba2b71853c9b4d46b

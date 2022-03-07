@@ -109,10 +109,9 @@ class InputsScreen extends StatelessWidget {
                     //FocusScope.of(context).requestFocus(FocusNode());
                     if (!myFormKey.currentState!.validate()) {
                       print('Formulario no válido.');
-                      return;
+                      //return;
                     }
                     _nombre = 'Hola';
-                    myFormKey.currentState!.build(context);
                     print('Nombre: $_nombre');
                     print(formValues);
                   },
