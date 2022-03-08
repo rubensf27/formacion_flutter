@@ -57,6 +57,16 @@ class _ListviewBuilderScreenState extends State<ListviewBuilderScreen> {
     setState(() {});
   }
 
+  Future<void> onRefresh() async {
+    await Future.delayed(
+      const Duration(seconds: 2),
+    );
+    final lastId = ids.last;
+    ids.clear();
+    ids.add(lastId + 1);
+    add5();
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -68,21 +78,25 @@ class _ListviewBuilderScreenState extends State<ListviewBuilderScreen> {
         removeBottom: true,
         child: Stack(
           children: [
-            ListView.builder(
-              physics: const BouncingScrollPhysics(),
-              controller: scrollController,
-              itemCount: ids.length,
-              itemBuilder: (BuildContext context, int index) {
-                return FadeInImage(
-                  width: double.infinity,
-                  height: 300,
-                  fit: BoxFit.cover,
-                  placeholder:
-                      const AssetImage('assets/loading_fl_components.gif'),
-                  image: NetworkImage(
-                      'https://picsum.photos/id/${ids[index] + 1}/500/300'),
-                );
-              },
+            RefreshIndicator(
+              onRefresh: onRefresh,
+              color: AppTheme.colorPrimary,
+              child: ListView.builder(
+                physics: const BouncingScrollPhysics(),
+                controller: scrollController,
+                itemCount: ids.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return FadeInImage(
+                    width: double.infinity,
+                    height: 300,
+                    fit: BoxFit.cover,
+                    placeholder:
+                        const AssetImage('assets/loading_fl_components.gif'),
+                    image: NetworkImage(
+                        'https://picsum.photos/id/${ids[index] + 1}/500/300'),
+                  );
+                },
+              ),
             ),
             if (isLoading)
               Positioned(
